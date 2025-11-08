@@ -1,6 +1,6 @@
 # Zig Erlang BERT encode && decode data
 
-```
+```erlang
 %% erlang
 
 erlang:term_to_binary(X).
@@ -15,7 +15,7 @@ erlang:binary_to_term(Y).
 <<131,104,5,100,0,4,116,101,115,116,97,42,70,64,9,33,249,240,27,134,110,107,0,3,1,2,3,109,0,0,0,6,98,108,97,98,108,97>>
 ```
 
-```
+```js
 // js (check bert.js -- code from n2o v4.4 with fixes)
 
 enc(tuple( atom('test'),  number(42), float(3.14159), list(1, 2, 3), bin( new Uint8Array([222, 173, 190, 239]) ) ) ); // bin('blabla'), bignum(bigInt(number))
@@ -25,7 +25,7 @@ enc(tuple( atom('test'),  number(42), float(3.14159), list(1, 2, 3), bin('blabla
 // Uint8Array(41) [131,104,5,118,0,4,116,101,115,116,97,42,70,64,9,33,249,240,27,134,110,108,0,0,0,3,106,106,106,106,109,0,0,0,6,98,108,97,98,108,97]
 ```
 
-```
+```bash
 zig 14.0.1
 
 // check code examples - test_bert1.zig and test_bert2.zig
