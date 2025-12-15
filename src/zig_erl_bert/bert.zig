@@ -315,6 +315,16 @@ fn decodeValue(allocator: Allocator, reader: anytype) !Bert_Value{
       return Bert_Value{ .atom = atom };
     },
     
+    107 => { // STRING_EXT
+      var len_buf: [2]u8 = undefined;
+      try readExact(reader, &len_buf);
+      const len = std.mem.readInt(u16, &len_buf, .big);
+      const str = try allocator.alloc(u8, len);
+      errdefer allocator.free(str);
+      try readExact(reader, str);
+      return Bert_Value{ .binary = str };
+    },
+    
     109 => { // BINARY_EXT
       var len_buf: [4]u8 = undefined;
       try readExact(reader, &len_buf);
