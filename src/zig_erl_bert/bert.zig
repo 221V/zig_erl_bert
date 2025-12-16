@@ -294,7 +294,7 @@ fn decodeValue(allocator: Allocator, reader: anytype) !Bert_Value{
     98 => { // INTEGER_EXT
       var buf: [4]u8 = undefined;
       try readExact(reader, &buf);
-      const n = @byteSwap(std.mem.readInt(i32, &buf, .big));
+      const n = std.mem.readInt(i32, &buf, .big);
       return Bert_Value{ .int = n };
     },
     
