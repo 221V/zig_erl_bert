@@ -275,3 +275,9 @@ function utf8_arr(ab){
   return utf8_dec(ab);
 }
 
+
+// DOM
+function qi(name){ return document.getElementById(name); }
+function qs(name){ return document.querySelector(name); }
+function qa(name){ return document.querySelectorAll(name); }
+
