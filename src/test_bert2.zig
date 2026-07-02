@@ -32,7 +32,11 @@ pub fn main() !void{
   defer _ = gpa.deinit();
   const allocator = gpa.allocator();
   
-  var bert = Bert.init(allocator);
+  var arena = std.heap.ArenaAllocator.init(allocator);
+  defer arena.deinit();
+  const arena_alloc = arena.allocator();
+  
+  var bert = Bert.init(arena_alloc); // use arena allocator for automatic free memory
   
   const tuple01 = try bert.tuple(&.{
     try bert.atom("test"),
