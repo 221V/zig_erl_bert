@@ -49,6 +49,8 @@ pub fn main() !void{
     }),
     //try bert.binary( &[_]u8{ 0xDE, 0xAD, 0xBE, 0xEF } ),
     try bert.binary( &[_]u8{ 222, 173, 190, 239 } ), // same as previous line
+    try bert.binary( "bamboleo" ), // try ascii - latin1
+    try bert.binary( "🦀🦀🦀 тест" ), // try emoji + cyrillic
   });
   
   const encoded = try bert.encode(tuple01);
@@ -85,6 +87,12 @@ pub fn main() !void{
   
   const binary1 = try get_binary_as_str( tuple[4] );
   print("binary1: {any}\n", .{ binary1 });
+  
+  const binary2 = try get_binary_as_str( tuple[5] );
+  print("binary2: {any}\n", .{ binary2 });
+  
+  const binary3 = try get_binary_as_str( tuple[6] );
+  print("binary3: {any}\n", .{ binary3 });
   
   const pretty = try format_bert(allocator, decoded);
   defer allocator.free(pretty);

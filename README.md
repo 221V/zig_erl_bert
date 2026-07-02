@@ -45,9 +45,9 @@ Decoded (Erlang style):
 
 $ zig build-exe ./src/test_bert2.zig -O ReleaseFast -femit-bin=test_bert2
 $ ./test_bert2
-Encoded: { 131, 104, 5, 118, 0, 4, 116, 101, 115, 116, 97, 42, 70, 64, 9, 33, 249, 240, 27, 134, 110, 108, 0, 0, 0, 3, 97, 1, 97, 2, 97, 3, 106, 109, 0, 0, 0, 4, 222, 173, 190, 239 }
+Encoded: { 131, 104, 7, 118, 0, 4, 116, 101, 115, 116, 97, 42, 70, 64, 9, 33, 249, 240, 27, 134, 110, 108, 0, 0, 0, 3, 97, 1, 97, 2, 97, 3, 106, 109, 0, 0, 0, 4, 222, 173, 190, 239, 109, 0, 0, 0, 8, 98, 97, 109, 98, 111, 108, 101, 111, 109, 0, 0, 0, 21, 240, 159, 166, 128, 240, 159, 166, 128, 240, 159, 166, 128, 32, 209, 130, 208, 181, 209, 129, 209, 130 }
 Decoded type: tuple
-tuple length: 5
+tuple length: 7
 atom: test
 int0: 42
 float: 3.14159e0
@@ -56,12 +56,10 @@ int1: 1
 int2: 2
 int3: 3
 binary1: { 222, 173, 190, 239 }
+binary2: { 98, 97, 109, 98, 111, 108, 101, 111 }
+binary3: { 240, 159, 166, 128, 240, 159, 166, 128, 240, 159, 166, 128, 32, 209, 130, 208, 181, 209, 129, 209, 130 }
 Decoded (Erlang style):
-{test, 42, 3.14159e0, [1, 2, 3], <<"��">>}
-
-// todo think about "debug in erlang style" -
-//   if uncomment - got u8 bytes list for cyrillic (latin1 shows correct only),
-//   if commented like now - got this <<"��">> instead u8 bytes list <<222,173,190,239>>
+{test, 42, 3.14159e0, [1, 2, 3], <<222,173,190,239>>, <<"bamboleo">>, <<"🦀🦀🦀 тест">>}
 ```
 
 ```
